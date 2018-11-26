@@ -1,6 +1,6 @@
 {
   "name": "@ungap/url-search-params",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "The URLSearchParams polyfill.",
   "main": "cjs/index.js",
   "module": "esm/index.js",
