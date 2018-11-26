@@ -7,8 +7,10 @@ The [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearch
 
 Previously known as [url-search-params](https://github.com/WebReflection/url-search-params).
 
-  * CDN via https://unpkg.com/@ungap/url-search-params
-  * ESM via `import isArray from '@ungap/url-search-params'`
-  * CJS via `const isArray = require('@ungap/url-search-params')`
+All detections have been included and the code covered 100% (DOM patches are not measured on NodeJS though).
+
+  * CDN global patch via https://unpkg.com/@ungap/url-search-params
+  * ESM via `import URLSearchParams from '@ungap/url-search-params'`
+  * CJS via `const URLSearchParams = require('@ungap/url-search-params')`
 
 [Live test](https://ungap.github.io/url-search-params/test/)
