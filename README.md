@@ -1,6 +1,6 @@
 # URLSearchParams
 
-[![Build Status](https://travis-ci.com/ungap/url-search-params.svg?branch=master)](https://travis-ci.com/ungap/url-search-params) [![Coverage Status](https://coveralls.io/repos/github/ungap/url-search-params/badge.svg?branch=master)](https://coveralls.io/github/ungap/url-search-params?branch=master) ![WebReflection status](https://offline.report/status/webreflection.svg)
+[![Build Status](https://travis-ci.com/ungap/url-search-params.svg?branch=master)](https://travis-ci.com/ungap/url-search-params) [![Coverage Status](https://coveralls.io/repos/github/ungap/url-search-params/badge.svg?branch=master)](https://coveralls.io/github/ungap/url-search-params?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/ungap/url-search-params.svg)](https://greenkeeper.io/) ![WebReflection status](https://offline.report/status/webreflection.svg)
 
 
 The [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) polyfill.
