@@ -14,3 +14,9 @@ All detections have been included and the code covered 100% (DOM patches are not
   * CJS via `const URLSearchParams = require('@ungap/url-search-params')`
 
 [Live test](https://ungap.github.io/url-search-params/test/)
+
+### ⚠ Webpack Users
+
+If you have issues just requiring `@ungap/url-search-params`, be sure you require `@ungap/url-search-params/cjs` instead.
+
+No issue should happen if you just `import` the module instead.
