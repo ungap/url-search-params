@@ -17,6 +17,7 @@ try {
     var create = Object.create;
     var defineProperty = Object.defineProperty;
     var find = /[!'\(\)~]|%20|%00/g;
+    var findPercentSign = /%(?![0-9][0-9a-fA-F]+)/g;
     var plus = /\+/g;
     var replace = {
       '!': '%21',
@@ -132,7 +133,7 @@ try {
     function addEach(value, key) {
       appendTo(this, key, value);
     }
-    
+
     function appendTo(dict, key, value) {
       var res = isArray(value) ? value.join(',') : value;
       if (key in dict)
@@ -140,11 +141,12 @@ try {
       else
         dict[key] = [res];
     }
-    
+
     function decode(str) {
-      return decodeURIComponent(str.replace(plus, ' '));
+      findPercentSign.lastIndex = 0;
+      return decodeURIComponent(str.replace(findPercentSign, '%25').replace(plus, ' '));
     }
-    
+
     function encode(str) {
       return encodeURIComponent(str).replace(find, replacer);
     }
