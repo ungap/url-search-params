@@ -9,8 +9,11 @@ test();
 
 // for code coverage sake
 delete require.cache[require.resolve('../cjs')];
+if (global.URLSearchParams)
+  delete global.URLSearchParams.prototype.forEach;
 global.URLSearchParams = function () { throw {}; };
 URLSearchParams = require('../cjs');
+test();
 
 delete require.cache[require.resolve('../cjs')];
 global.URLSearchParams = function (query) {
@@ -19,6 +22,7 @@ global.URLSearchParams = function (query) {
   return {get: function () { return '+'; }};
 };
 URLSearchParams = require('../cjs');
+test();
 
 delete require.cache[require.resolve('../cjs')];
 global.URLSearchParams = function (query) {
@@ -27,6 +31,7 @@ global.URLSearchParams = function (query) {
   return {get: function () { return '+'; }};
 };
 URLSearchParams = require('../cjs');
+test();
 
 delete require.cache[require.resolve('../cjs')];
 global.URLSearchParams = function (query) {
@@ -35,6 +40,7 @@ global.URLSearchParams = function (query) {
   return {get: function () { return '-'; }};
 };
 URLSearchParams = require('../cjs');
+test();
 
 delete require.cache[require.resolve('../cjs')];
 global.URLSearchParams = USP;

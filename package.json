@@ -22,9 +22,9 @@
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "devDependencies": {
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.9",
     "istanbul": "^0.4.5",
-    "uglify-js": "^3.4.9"
+    "uglify-js": "^3.7.0"
   },
   "repository": {
     "type": "git",
