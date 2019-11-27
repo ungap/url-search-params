@@ -143,7 +143,6 @@ try {
     }
 
     function decode(str) {
-      findPercentSign.lastIndex = 0;
       return decodeURIComponent(str.replace(findPercentSign, '%25').replace(plus, ' '));
     }
 
