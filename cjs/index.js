@@ -7,7 +7,8 @@ try {
       new URLSearchParams({q: plus}).get('q') !== plus ||
       new URLSearchParams([['q', plus]]).get('q') !== plus ||
       new URLSearchParams('q=\n').toString() !== 'q=%0A' ||
-      new URLSearchParams({q: ' &'}).toString() !== 'q=+%26'
+      new URLSearchParams({q: ' &'}).toString() !== 'q=+%26' ||
+      new URLSearchParams({q: '%zx'}).toString() !== 'q=%25zx'
     )
       throw URLSearchParams;
     self.URLSearchParams = URLSearchParams;
