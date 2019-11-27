@@ -7,7 +7,8 @@ try {
       new URLSearchParams({q: plus}).get('q') !== plus ||
       new URLSearchParams([['q', plus]]).get('q') !== plus ||
       new URLSearchParams('q=\n').toString() !== 'q=%0A' ||
-      new URLSearchParams({q: ' &'}).toString() !== 'q=+%26'
+      new URLSearchParams({q: ' &'}).toString() !== 'q=+%26' ||
+      new URLSearchParams({q: '%zx'}).toString() !== 'q=%25zx'
     )
       throw URLSearchParams;
     self.URLSearchParams = URLSearchParams;
@@ -17,6 +18,7 @@ try {
     var create = Object.create;
     var defineProperty = Object.defineProperty;
     var find = /[!'\(\)~]|%20|%00/g;
+    var findPercentSign = /%(?![0-9][0-9a-fA-F]+)/g;
     var plus = /\+/g;
     var replace = {
       '!': '%21',
@@ -132,7 +134,7 @@ try {
     function addEach(value, key) {
       appendTo(this, key, value);
     }
-    
+
     function appendTo(dict, key, value) {
       var res = isArray(value) ? value.join(',') : value;
       if (key in dict)
@@ -140,11 +142,11 @@ try {
       else
         dict[key] = [res];
     }
-    
+
     function decode(str) {
-      return decodeURIComponent(str.replace(plus, ' '));
+      return decodeURIComponent(str.replace(findPercentSign, '%25').replace(plus, ' '));
     }
-    
+
     function encode(str) {
       return encodeURIComponent(str).replace(find, replacer);
     }

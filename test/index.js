@@ -119,6 +119,8 @@ function test() {
   usp = new URLSearchParams('a=12=3');
   wru.assert('correct escaping', usp.toString() === 'a=12%3D3');
   wru.assert('correct value', usp.get('a') === '12=3');
+  usp = new URLSearchParams('a=%zx');
+  wru.assert('correct & value', usp.get('a') === '%zx');
   usp = new URLSearchParams([['a', 'b']]);
   console.assert(usp.get('a') === 'b', 'constructing via Array');
   usp = new URLSearchParams({'a': 'b'});
