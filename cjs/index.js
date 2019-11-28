@@ -18,7 +18,7 @@ try {
     var create = Object.create;
     var defineProperty = Object.defineProperty;
     var find = /[!'\(\)~]|%20|%00/g;
-    var findPercentSign = /%(?![0-9][0-9a-fA-F]+)/g;
+    var findPercentSign = /%(?![0-9a-fA-F]{2})/g;
     var plus = /\+/g;
     var replace = {
       '!': '%21',
