@@ -1,3 +1,4 @@
+var iterator = Symbol.iterator;
 var URLSearchParams = require('../cjs');
 var USP = global.URLSearchParams || URLSearchParams;
 var wru = {
@@ -59,7 +60,6 @@ if (typeof process === 'object') {
   delete USP.prototype.values;
   delete USP.prototype.entries;
   delete USP.prototype.sort;
-  global.Symbol = {};
   URLSearchParams = require('../cjs');
   testExtras();
 }
@@ -139,8 +139,8 @@ function test() {
     }
   };
   try {
-    fake[Symbol.iterator] = function () {
-      return [['a', 'b']][Symbol.iterator]();
+    fake[iterator] = function () {
+      return [['a', 'b']][iterator]();
     };
   } catch (meh) {}
   usp = new URLSearchParams(fake);
