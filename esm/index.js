@@ -245,12 +245,13 @@ try {
   function iterator(self, callback) {
     var items = [];
     self.forEach(callback, items);
+    /* istanbul ignore next */
     return iterable ?
       items[Symbol.iterator]() :
       {
         next: function() {
           var value = items.shift();
-          return {done: value === undefined, value: value};
+          return {done: value === void 0, value: value};
         }
       };
   }

@@ -2,8 +2,8 @@
   "name": "@ungap/url-search-params",
   "version": "0.1.4",
   "description": "The URLSearchParams polyfill.",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
   "unpkg": "min.js",
   "scripts": {
     "build": "npm run cjs && npm run esm && npm run min && npm run test && npm run size",
@@ -11,8 +11,8 @@
     "esm": "cp index.js esm/ && echo 'export default self.URLSearchParams;' >> esm/index.js",
     "min": "uglifyjs index.js --support-ie8 --comments=/^!/ -c -m -o min.js",
     "size": "cat index.js | wc -c && cat min.js | wc -c && gzip -c9 min.js | wc -c && cat min.js | brotli | wc -c",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test": "istanbul cover test/index.js"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc node test/index.js"
   },
   "keywords": [
     "URLSearchParams",
@@ -22,9 +22,9 @@
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "devDependencies": {
-    "coveralls": "^3.0.9",
-    "istanbul": "^0.4.5",
-    "uglify-js": "^3.7.0"
+    "coveralls": "^3.1.0",
+    "nyc": "^15.0.1",
+    "uglify-js": "^3.9.1"
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,10 @@
   "bugs": {
     "url": "https://github.com/ungap/url-search-params/issues"
   },
-  "homepage": "https://github.com/ungap/url-search-params#readme"
+  "homepage": "https://github.com/ungap/url-search-params#readme",
+  "type": "module",
+  "exports": {
+    "import": "./esm/index.js",
+    "default": "./cjs/index.js"
+  }
 }
