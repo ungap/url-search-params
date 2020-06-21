@@ -7,8 +7,8 @@
   "unpkg": "min.js",
   "scripts": {
     "build": "npm run cjs && npm run esm && npm run min && npm run test && npm run size",
-    "cjs": "cp index.js cjs/ && echo 'module.exports = self.URLSearchParams;' >> cjs/index.js",
-    "esm": "cp index.js esm/ && echo 'export default self.URLSearchParams;' >> esm/index.js",
+    "cjs": "cat index.js | sed 's/var self = this || {};/var self = {};/' > cjs/index.js && echo 'module.exports = self.URLSearchParams;' >> cjs/index.js",
+    "esm": "cat index.js | sed 's/var self = this || {};/var self = {};/' > esm/index.js && echo 'export default self.URLSearchParams;' >> esm/index.js",
     "min": "uglifyjs index.js --support-ie8 --comments=/^!/ -c -m -o min.js",
     "size": "cat index.js | wc -c && cat min.js | wc -c && gzip -c9 min.js | wc -c && cat min.js | brotli | wc -c",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
